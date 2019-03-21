@@ -1,14 +1,19 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+<ion-header text-center>
+  <ion-row>
+    <ion-col class="searchbar" text-center>
+      <form action="">
+        <ion-searchbar name="name" placeholder="検索"></ion-searchbar>
+      </form>
+    </ion-col>
+  </ion-row>
+  <div class="circle"></div>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <!--<ion-list class="contents">-->
+    <!--<ion-item> &lt;!&ndash; *ngForで回すのが良さそう &ndash;&gt;-->
+
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+  <button ion-button block (click)="authTest()"></button>
 </ion-content>

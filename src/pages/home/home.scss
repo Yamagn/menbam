@@ -1,3 +1,24 @@
 page-home {
+  background-color: #F0F0F0;
+  ion-header{
+    background-color: #FFCE00;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 25%;
+    margin-right: auto;
+    margin-left: auto;
+  }
 
+  .searchbar {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 40%;
+    border-radius: 10px;
+  }
+
+  .contents {
+    margin-top: 35%;
+    background-color: #ffffff;
+  }
 }
