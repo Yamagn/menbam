@@ -7,6 +7,7 @@ page-home {
     height: 25%;
     margin-right: auto;
     margin-left: auto;
+    z-index: 3;
   }
 
   .searchbar {
@@ -15,10 +16,21 @@ page-home {
     margin-top: 30px;
     width: 40%;
     border-radius: 10px;
+    z-index: 4;
+  }
+
+  #map_canvas {
+    top: 40px;
+    position: absolute;
+    width: 30%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 5;
   }
 
   .contents {
-    margin-top: 35%;
+    margin-top: 50%;
     background-color: #ffffff;
   }
 }
