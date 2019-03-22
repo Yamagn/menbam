@@ -17,7 +17,7 @@ export class HomePage implements OnInit{
 
   async ngOnInit() {
     await this.platform.ready();
-    await this.loadMap()
+    // await this.loadMap()
   }
 
   loadMap() {

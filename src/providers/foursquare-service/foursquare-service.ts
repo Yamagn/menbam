@@ -27,21 +27,19 @@ export class FoursquareServiceProvider {
       "https://foursquare.com/oauth2/authenticate" +
       "?client_id=" + client_id +
       "&response_type=code" +
-      "&redirect_uri=" + location.toString(),
-      "_blank",
-      "location=no"
+      "&redirect_uri=" + "http://localhost:8100"
     );
   }
 
   getToken(code: string){
-    let params = new HttpParams()
-      .append("client_id", client_id)
-      .append("client_secret", client_secret)
-      .append("grant_type", "authorization_code")
-      .append("redirect_uri", location.toString())
-      .append("code", code)
+    let url = "https://foursquare.com/oauth2/access_token?" +
+      "client_id=" + client_id + "&" +
+      "client_secret=" + client_secret + "&" +
+      "grant_type=authorization_code&" +
+      "redirect_uri=http://localhost:8100&" +
+      "code=" + code
 
-    let res = this.http.get("https://foursquare.com/oauth2/access_token", { params: params });
+    let res = this.http.get(url);
     res.subscribe((token: Token) => {
       if(token.access_token) {
         if(!this.storage.get("token")) {
