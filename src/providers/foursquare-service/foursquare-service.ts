@@ -52,13 +52,14 @@ export class FoursquareServiceProvider {
   }
 
   getCheckins(): Observable<Object> {
-    // this.storage.get("token").then((t) => {
-    //   token = t;
-    // });
-    // if (token === "") {
-    //   console.log("unavailable get token");
-    //   return
-    // }
-    return this.http.get("https://api.foursquare.com/v2/users/self/checkins?oauth_token=" + token + "&v=20190324&limit=100");
+    var access_token = "";
+    this.storage.get("token").then( t => {
+      access_token = t;
+    });
+    if(access_token === "") {
+      this.storage.set("token", token);
+      access_token = token;
+    }
+    return this.http.get("https://api.foursquare.com/v2/users/self/checkins?oauth_token=" + access_token + "&v=20190324&limit=100");
   }
 }

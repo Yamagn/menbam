@@ -12,6 +12,7 @@ import { IonicStorageModule } from "@ionic/storage";
 import {DetailPageModule} from "../pages/detail/detail.module";
 import {BookmarkPageModule} from "../pages/bookmark/bookmark.module";
 import {MemoPageModule} from "../pages/memo/memo.module";
+import { BookmarkProvider } from '../providers/bookmark/bookmark';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MemoPageModule} from "../pages/memo/memo.module";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FoursquareServiceProvider
+    FoursquareServiceProvider,
+    BookmarkProvider
   ]
 })
 export class AppModule {}
