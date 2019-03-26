@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FoursquareServiceProvider} from "../providers/foursquare-service/foursquare-service";
 import { HomePage } from '../pages/home/home';
+import { Storage } from "@ionic/storage";
 import {Environment} from "@ionic-native/google-maps";
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +13,11 @@ import {Environment} from "@ionic-native/google-maps";
 export class MyApp {
   rootPage:any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private foursquareService: FoursquareServiceProvider) {
+  constructor(platform: Platform,
+              statusBar: StatusBar,
+              splashScreen: SplashScreen,
+              private foursquareService: FoursquareServiceProvider,
+              private storage: Storage) {
     platform.ready().then(() => {
       // Environment.setEnv({
       //   'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDcxw_gQOzT3sli1XjIW6fGlgJFT8jvlbo',
@@ -24,11 +29,23 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    var url: string = location.toString()
-    if(url.indexOf("?code=") != -1) {
-      this.foursquareService.getToken(url.split("?code=")[1]);
-    }
-    return
+    // let url: string = location.toString();
+    // let code: string = "";
+    // if(url.indexOf("?code=") != -1) {
+    //   code = url.split("?code=")[1];
+    //   console.log("code: " + code);
+    //   this.foursquareService.getToken(code);
+    // }
+    //
+    // let token = "";
+    // this.storage.get("token").then((t) => {
+    //   token = t;
+    // });
+    //
+    // if (code === "") {
+    //   this.foursquareService.auth();
+    // }
+    // return
   }
 }
 

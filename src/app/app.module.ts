@@ -9,6 +9,9 @@ import { HomePage } from '../pages/home/home';
 import { FoursquareServiceProvider } from '../providers/foursquare-service/foursquare-service';
 import { HttpClientModule } from "@angular/common/http";
 import { IonicStorageModule } from "@ionic/storage";
+import {DetailPageModule} from "../pages/detail/detail.module";
+import {BookmarkPageModule} from "../pages/bookmark/bookmark.module";
+import {MemoPageModule} from "../pages/memo/memo.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { IonicStorageModule } from "@ionic/storage";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    DetailPageModule,
+    BookmarkPageModule,
+    MemoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

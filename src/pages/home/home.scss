@@ -1,36 +1,37 @@
 page-home {
   background-color: #F0F0F0;
-  ion-header{
+
+  ion-header {
     background-color: #FFCE00;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    height: 25%;
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    height: 20%;
     margin-right: auto;
     margin-left: auto;
     z-index: 3;
   }
 
-  .searchbar {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    width: 40%;
-    border-radius: 10px;
+  .starButton {
+    margin-right: 20px;
+    width: 30px;
+    color: #488aff;
     z-index: 4;
   }
 
   #map_canvas {
-    top: 40px;
+    top: 22%;
+    left: 0;
+    right: 0;
+    bottom: 0;
     position: absolute;
-    width: 30%;
-    height: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 90%;
+    height: 25%;
+    margin: 0 auto;
     z-index: 5;
   }
 
-  .contents {
-    margin-top: 50%;
-    background-color: #ffffff;
+  ion-content {
+    position: relative;
+    top: 40%;
   }
 }

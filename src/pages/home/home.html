@@ -1,23 +1,23 @@
 <ion-header text-center>
-  <ion-row>
-    <ion-col class="searchbar" text-center>
-      <form action="">
-        <ion-searchbar name="name" placeholder="検索"></ion-searchbar>
-      </form>
-    </ion-col>
-  </ion-row>
-  <div class="circle"></div>
+  <button icon-only class="starButton" (click)="openBookmark()">
+    <ion-icon name="star"></ion-icon>
+  </button>
 </ion-header>
 
-<!--<div id="map_canvas" text-center>-->
-
-<!--</div>-->
+<ion-card id="map_canvas" text-center></ion-card>
 
 <ion-content padding>
-  <!--<ion-list class="contents">-->
-    <!--<ion-item> &lt;!&ndash; *ngForで回すのが良さそう &ndash;&gt;-->
-
-    <!--</ion-item>-->
-  <!--</ion-list>-->
-  <button ion-button block (click)="authTest()"></button>
+  <ion-list>
+    <ng-container *ngFor="let ramen of ramens">
+      <button ion-item (click)="openDetail(ramen)">
+        <div class="cell">
+          <div class="description">
+            <h2>{{ ramen.venue.name }}</h2>
+            <p>{{ ramen.exactContextLine }}</p>
+            <p>{{ ramen.createdAt | date: "MM月dd日 HH:mm"}}</p>
+          </div>
+        </div>
+      </button>
+    </ng-container>
+  </ion-list>
 </ion-content>
