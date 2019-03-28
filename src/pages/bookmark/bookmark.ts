@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from "@ionic/storage";
+import {BookmarkProvider} from "../../providers/bookmark/bookmark";
 
 /**
  * Generated class for the BookmarkPage page.
@@ -14,12 +16,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'bookmark.html',
 })
 export class BookmarkPage {
+  ramens: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public storage: Storage,
+              public bookmarkProvider: BookmarkProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BookmarkPage');
+    this.bookmarkProvider.get().then( (ramens: any[]) => {
+      this.ramens = ramens;
+    })
   }
 
 }

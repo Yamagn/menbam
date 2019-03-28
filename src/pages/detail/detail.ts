@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {FoursquareServiceProvider} from "../../providers/foursquare-service/foursquare-service";
 import {BookmarkProvider} from "../../providers/bookmark/bookmark";
 import {MemoPage} from "../memo/memo";
@@ -22,7 +22,8 @@ export class DetailPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public bookmark: BookmarkProvider) {
+              public bookmark: BookmarkProvider,
+              public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -30,7 +31,13 @@ export class DetailPage {
   }
 
   doBookmark() {
-    this.bookmark.put(this.ramen);
+    this.bookmark.put(this.ramen).then(() => {
+      const toast = this.toastCtrl.create({
+        message: "イベントをブックマークしました",
+        duration: 1500
+      });
+      toast.present();
+    });
   }
 
   doCreate() {
