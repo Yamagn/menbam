@@ -22,9 +22,17 @@ export class BookmarkProvider {
     });
   }
 
-  put(ramens: any) {
+  put(ramen: any) {
     return this.get().then(ramens => {
-      // TODO
+      ramens.push(ramen);
+      return this.storage.set("bookmark.ramens", ramens);
+    })
+  }
+
+  delete(index: number) {
+    return this.get().then(ramens => {
+      delete ramens[index];
+      return this.storage.set("bookmark.ramens", ramens);
     })
   }
 
