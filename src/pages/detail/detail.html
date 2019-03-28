@@ -7,9 +7,8 @@
 <ion-header>
   <ion-navbar color="header">
     <ion-buttons end>
-      <button ion-button icon-start (click)="doBookmark()">
-        <ion-icon name="bookmark"></ion-icon>
-        ブックマーク
+      <button ion-button icon-start (click)="doCreate()">
+        <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -28,12 +27,18 @@
             <p>{{ ramen.exactContextLine }}</p>
             <p>{{ ramen.createdAt | date: "MM月dd日 HH:mm"}}</p>
           </ion-col>
+          <ion-col col-2>
+            <button ion-button (click)="doBookmark()">
+              <ion-icon name="bookmark"></ion-icon>
+            </button>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-header>
 
     <ion-card-content>
-      <!--<h4>{{ memo.description }}</h4>-->
+      <h4 class="memo" *ngIf="memo; else elseblock">{{ memo.description }}</h4>
+      <ng-template class="memo" #elseblock text-center><h4>メモはありません</h4></ng-template>
       <div class="image"></div>
     </ion-card-content>
   </ion-card>
