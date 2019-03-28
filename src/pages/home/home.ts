@@ -86,7 +86,9 @@ export class HomePage implements OnInit{
   }
 
   openDetail(ramen) {
-    this.navCtrl.push(DetailPage);
+    this.navCtrl.push(DetailPage, {
+      ramen: ramen
+    });
   }
 
   // loadMap() {

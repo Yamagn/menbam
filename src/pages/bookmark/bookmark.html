@@ -1,4 +1,6 @@
 <ion-header text-center>
+  <ion-navbar color="header">
+  </ion-navbar>
 </ion-header>
 
 <!--<div id="map_canvas" text-center>-->
@@ -6,19 +8,22 @@
 <!--</div>-->
 
 <ion-content padding>
-  <ion-list class="ramen-list">
+  <ion-list>
     <ng-container *ngFor="let ramen of ramens">
       <button ion-item (click)="openDetail(ramen)">
-        <div class="cell">
-          <!-- TODO img src="" -->
-          <div class="description">
-            <h2>{{ ramen.venue.name }}</h2>
-            <p>{{ ramen.exactContextLine }}</p>
-            <p>{{ ramen.createdAt | date: "MM月dd日 HH:mm"}}</p>
-          </div>
-        </div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3>
+              <!--<image>-->
+            </ion-col>
+            <ion-col col-9>
+              <h2>{{ ramen.venue.name }}</h2>
+              <p>{{ ramen.exactContextLine }}</p>
+              <p>{{ ramen.createdAt | date: "MM月dd日 HH:mm"}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </button>
     </ng-container>
   </ion-list>
-  <button ion-button block (click)="authTest()"></button>
 </ion-content>

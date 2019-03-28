@@ -5,11 +5,36 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="header">
+    <ion-buttons end>
+      <button ion-button icon-start (click)="doBookmark()">
+        <ion-icon name="bookmark"></ion-icon>
+        ブックマーク
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-card>
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <!--TODO: <image>-->
+          </ion-col>
+          <ion-col col-8 *ngIf="ramen">
+            <h2>{{ ramen.venue.name }}</h2>
+            <p>{{ ramen.exactContextLine }}</p>
+            <p>{{ ramen.createdAt | date: "MM月dd日 HH:mm"}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!--<h4>{{ memo.description }}</h4>-->
+      <div class="image"></div>
+    </ion-card-content>
   </ion-card>
 </ion-content>
