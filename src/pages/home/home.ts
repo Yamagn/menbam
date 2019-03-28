@@ -37,10 +37,8 @@ export class HomePage implements OnInit{
     this.foursquareService.getCheckins().subscribe((body: any) => {
       if (body && body.response && body.response.checkins) {
         this.ramens = body.response.checkins.items.filter(function(item) {
-          console.log(item.venue.categories[0].shortName);
           return item.venue.categories[0].shortName === "ラーメン"
         });
-        console.log(this.ramens);
       }
       loader.dismissAll();
     }, (error: any) => {

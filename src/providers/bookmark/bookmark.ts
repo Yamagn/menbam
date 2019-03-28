@@ -18,13 +18,22 @@ export class BookmarkProvider {
 
   get() {
     return this.storage.get("bookmark.ramens").then(ramens => {
-      return ramens ? ramens : {};
+      return ramens ? ramens : [];
     });
   }
 
-  put(ramens: any) {
+  put(ramen: any) {
+    return this.get().then((ramens: any[]) => {
+      ramens.push(ramen);
+      console.log(ramens);
+      return this.storage.set("bookmark.ramens", ramens);
+    })
+  }
+
+  delete(index: number) {
     return this.get().then(ramens => {
-      // TODO
+      delete ramens[index];
+      return this.storage.set("bookmark.ramens", ramens);
     })
   }
 
