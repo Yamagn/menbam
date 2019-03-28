@@ -9,13 +9,16 @@ page-home {
     margin-right: auto;
     margin-left: auto;
     z-index: 3;
+
+    .home-header {
+      border: none;
+    }
   }
 
   .starButton {
     margin-right: 20px;
-    width: 30px;
-    color: #488aff;
     z-index: 4;
+    background-color: #FFCE00;
   }
 
   #map_canvas {
@@ -32,6 +35,6 @@ page-home {
 
   ion-content {
     position: relative;
-    top: 40%;
+    top: 30%;
   }
 }
