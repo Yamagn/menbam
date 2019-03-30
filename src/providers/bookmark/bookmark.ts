@@ -32,7 +32,7 @@ export class BookmarkProvider {
 
   delete(index: number) {
     return this.get().then(ramens => {
-      delete ramens[index];
+      ramens.splice(index, 1);
       return this.storage.set("bookmark.ramens", ramens);
     })
   }

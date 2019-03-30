@@ -5,11 +5,29 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>memoPage</ion-title>
+  <ion-navbar color="header">
+    <ion-buttons end>
+      <button ion-button icon-start click="sendMemo()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <button class="uploadButton" ion-button color="primary" text-center (click)="uploadImage()">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          <ion-icon name="image"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+          画像をアップロード
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </button>
+  <ion-card class="inputCard" text-center>
+    <ion-textarea class="textArea" type="text" placeholder="このラーメンはどうでしたか？"></ion-textarea>
+  </ion-card>
 </ion-content>
