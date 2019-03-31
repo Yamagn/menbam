@@ -9,7 +9,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-card id="map_canvas" text-center></ion-card>
+<ion-card class="mapCard" text-center>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  </agm-map>
+</ion-card>
 
 <ion-content padding>
   <ion-list class="ramen-list">

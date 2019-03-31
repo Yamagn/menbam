@@ -18,8 +18,8 @@ import { AngularFireModule } from 'angularfire2'
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireStorageModule } from "angularfire2/storage";
 import { AngularFireDatabaseModule } from "angularfire2/database";
-import { File } from '@ionic-native/file'
-import { Camera } from "@ionic-native/camera";
+import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
+import {googlemaps_key} from "../key";
 
 @NgModule({
   declarations: [
@@ -37,7 +37,10 @@ import { Camera } from "@ionic-native/camera";
     AngularFireModule.initializeApp(enviroment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AgmCoreModule.forRoot({
+      apiKey: googlemaps_key
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

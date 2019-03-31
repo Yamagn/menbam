@@ -21,7 +21,7 @@ page-home {
     background-color: #FFCE00;
   }
 
-  #map_canvas {
+  .mapCard {
     top: 22%;
     left: 0;
     right: 0;
@@ -31,6 +31,11 @@ page-home {
     height: 25%;
     margin: 0 auto;
     z-index: 5;
+  }
+
+  agm-map {
+    height: 100%;
+    width: 100%;
   }
 
   ion-content {
