@@ -41,6 +41,8 @@ export class DetailPage {
   }
 
   doCreate() {
-    this.navCtrl.push(MemoPage);
+    this.navCtrl.push(MemoPage, {
+      ramen: this.ramen
+    });
   }
 }

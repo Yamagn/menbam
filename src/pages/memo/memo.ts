@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
-import {ActionSheetController, AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {
+  ActionSheetController,
+  AlertController,
+  IonicPage,
+  LoadingController,
+  NavController,
+  NavParams
+} from 'ionic-angular';
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {SafeUrl} from "@angular/platform-browser";
 import {DomSanitizer} from "@angular/platform-browser";
+import {Observable} from "rxjs";
+import {AngularFireStorage} from "angularfire2/storage";
 
 /**
  * Generated class for the MemoPage page.
@@ -19,6 +28,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class MemoPage {
 
+  ramen: any;
   memoText: string;
   image_uri: any;
   image_uri_for_preview: SafeUrl;
@@ -28,11 +38,15 @@ export class MemoPage {
               public actionSheetCtrl: ActionSheetController,
               public camera: Camera,
               public domSanitizer: DomSanitizer,
-              public alertCrtl: AlertController) {
+              public alertCrtl: AlertController,
+              public loadingCtrl: LoadingController,
+              public fireStorage: AngularFireStorage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MemoPage');
+    this.ramen = this.navParams.data.ramen;
+    console.log(this.ramen);
   }
 
   uploadImage() {
@@ -87,7 +101,24 @@ export class MemoPage {
   }
 
   sendMemo() {
-
+    if (!this.image_uri) {
+      return Observable.of("");
+    }
+    let loader = this.loadingCtrl.create({
+      content: "アップロード中..."
+    });
+    loader.present();
+    return Observable.fromPromise(
+      this.fireStorage.ref(`images/${this.ramen.id}.jpg`).putString(this.image_uri, "data_url")
+        .then((snapshot) => {
+          loader.dismiss();
+          console.log("アップロード完了");
+        }).catch((error) => {
+          loader.dismiss();
+          console.log(error);
+          console.log("アップロード失敗");
+      })
+    );
   }
 
 }
