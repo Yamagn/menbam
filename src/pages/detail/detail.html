@@ -24,8 +24,7 @@
           </ion-col>
           <ion-col col-8 *ngIf="ramen">
             <h2>{{ ramen.venue.name }}</h2>
-            <p>{{ ramen.exactContextLine }}</p>
-            <p>{{ ramen.createdAt | date: "MM月dd日 HH:mm"}}</p>
+            <p>{{ ramen.createdAt * 1000 | date: "MM月dd日 HH:mm"}}</p>
           </ion-col>
           <ion-col col-2>
             <button ion-button (click)="doBookmark()">
@@ -37,9 +36,9 @@
     </ion-card-header>
 
     <ion-card-content>
-      <h4 class="memo" *ngIf="memo; else elseblock">{{ memo.description }}</h4>
+      <h4 class="memo" *ngIf="memoText; else elseblock">{{ memoText }}</h4>
       <ng-template class="memo" #elseblock text-center><h4>メモはありません</h4></ng-template>
-      <div class="image"></div>
+      <img class="ramenImage" [src]="image_url">
     </ion-card-content>
   </ion-card>
 </ion-content>

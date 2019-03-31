@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar color="header">
     <ion-buttons end>
-      <button ion-button icon-start click="sendMemo()">
+      <button ion-button icon-start (click)="sendMemo()">
         <ion-icon name="send"></ion-icon>
       </button>
     </ion-buttons>
@@ -27,6 +27,7 @@
       </ion-row>
     </ion-grid>
   </button>
+  <img [src]="image_uri_for_preview" *ngIf="image_uri_for_preview" class="preview">
   <ion-card class="inputCard" text-center>
     <textarea [(ngModel)]="memoText" class="textArea" type="text" placeholder="このラーメンはどうでしたか？"></textarea>
   </ion-card>

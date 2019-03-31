@@ -26,7 +26,7 @@
             <ion-col col-9>
               <h2>{{ ramen.venue.name }}</h2>
               <p>{{ ramen.exactContextLine }}</p>
-              <p>{{ ramen.createdAt | date: "MM月dd日 HH:mm"}}</p>
+              <p>{{ ramen.createdAt * 1000 | date: "MM月dd日 HH:mm"}}</p>
             </ion-col>
           </ion-row>
         </ion-grid>
