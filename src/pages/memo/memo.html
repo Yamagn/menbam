@@ -27,6 +27,7 @@
       </ion-row>
     </ion-grid>
   </button>
+  <img [src]="image_uri_for_preview" *ngIf="image_uri_for_preview" class="preview">
   <ion-card class="inputCard" text-center>
     <textarea [(ngModel)]="memoText" class="textArea" type="text" placeholder="このラーメンはどうでしたか？"></textarea>
   </ion-card>

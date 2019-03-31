@@ -71,9 +71,10 @@ export class MemoPage {
       const getPicture = this.camera.getPicture(options);
 
       getPicture.then((imageData) => {
-        this.image_uri = "data:image/jpeg;charset=utf-8;base64, " + imageData;
+        this.image_uri = "data:image/jpeg;base64, " + imageData;
 
-        this.image_uri = this.domSanitizer.bypassSecurityTrustUrl(this.image_uri);
+        this.image_uri_for_preview = this.domSanitizer.bypassSecurityTrustUrl(this.image_uri);
+
       },(err) => {
         console.log(err);
         const alert =this.alertCrtl.create({
