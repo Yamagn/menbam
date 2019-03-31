@@ -27,7 +27,7 @@ export class MemoPage {
   }
 
   uploadImage() {
-
+    
   }
 
   sendMemo() {

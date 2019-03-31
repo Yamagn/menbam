@@ -25,7 +25,8 @@ export class HomePage implements OnInit{
     await this.platform.ready();
     // await this.loadMap()
 
-    this.loadCheckins()
+    this.loadCheckins();
+    this.loadMap();
   }
 
   loadCheckins() {
@@ -87,26 +88,6 @@ export class HomePage implements OnInit{
     this.navCtrl.push(DetailPage, {
       ramen: ramen
     });
-  }
-
-  // loadMap() {
-  //   this.map = GoogleMaps.create("map_canvas", {
-  //     camera: {
-  //       target: {
-  //         lat: 35.103611,
-  //         lng: 137.148183
-  //       },
-  //       zoom: 18,
-  //       tilt: 30
-  //     }
-  //   });
-  // }
-
-  authTest() {
-    if (!this.storage.get("token")){
-      this.foursquareService.auth();
-      return
-    }
   }
 
   openBookmark() {
