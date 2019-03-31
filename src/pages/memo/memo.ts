@@ -64,6 +64,8 @@ export class MemoPage {
     this.ramen = this.navParams.data.ramen;
     this.memoText = this.navParams.data.memoText;
 
+    this.existMemoText = this.navParams.data.memoText;
+
     this.memosCollection = this.afs.collection("memos");
     this.memoDocument = this.afs.doc(`memos/${this.ramen.id}`);
     console.log(this.memosCollection);
@@ -130,7 +132,12 @@ export class MemoPage {
       content: "アップロード中..."
     });
 
-    this.memosCollection.doc(this.ramen.id).set(memo);
+    if(this.existMemoText != "") {
+      this.memosCollection.doc(this.ramen.id).update(memo)
+    } else {
+      this.memosCollection.doc(this.ramen.id).set(memo);
+    }
+
 
     let toast = this.toastCtrl.create({
       message: "メモを保存しました",
