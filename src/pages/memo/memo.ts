@@ -5,13 +5,15 @@ import {
   IonicPage,
   LoadingController,
   NavController,
-  NavParams, normalizeURL, Platform
+  NavParams, Platform
 } from 'ionic-angular';
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {SafeUrl} from "@angular/platform-browser";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Observable} from "rxjs";
 import {AngularFireStorage} from "angularfire2/storage";
+import {Storage} from "@ionic/storage";
+import {Memo} from "../../Models/Memo";
 
 /**
  * Generated class for the MemoPage page.
@@ -32,6 +34,7 @@ export class MemoPage {
   memoText: string;
   image_uri: any;
   image_uri_for_preview: SafeUrl;
+  existMemoText: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -41,13 +44,14 @@ export class MemoPage {
               public domSanitizer: DomSanitizer,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
-              public fireStorage: AngularFireStorage) {
+              public fireStorage: AngularFireStorage,
+              public storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MemoPage');
     this.ramen = this.navParams.data.ramen;
-    console.log(this.ramen);
+    this.memoText = this.navParams.data.memoText;
   }
 
   uploadImage() {
@@ -86,7 +90,6 @@ export class MemoPage {
       const getPicture = this.camera.getPicture(options);
 
       getPicture.then((imageData) => {
-        let win: any = window;
 
         this.image_uri = "data:image/jpeg;base64," + imageData;
         console.log(this.image_uri);
@@ -104,6 +107,9 @@ export class MemoPage {
   }
 
   sendMemo() {
+    let memo: Memo = {
+      content: this.memoText
+    };
     if (!this.image_uri) {
       return Observable.of("");
     }
@@ -111,6 +117,11 @@ export class MemoPage {
       content: "アップロード中..."
     });
     loader.present();
+    if(memo.content != "") {
+      if(this.existMemoText != "") {
+      } else {
+      }
+    }
     return Observable.fromPromise(
       this.fireStorage.ref(`images/${this.ramen.id}.jpg`).putString(this.image_uri, "data_url")
         .then((snapshot) => {

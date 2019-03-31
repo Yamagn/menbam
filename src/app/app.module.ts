@@ -15,9 +15,8 @@ import {BookmarkPageModule} from "../pages/bookmark/bookmark.module";
 import {MemoPageModule} from "../pages/memo/memo.module";
 import { BookmarkProvider } from '../providers/bookmark/bookmark';
 import { AngularFireModule } from 'angularfire2'
-import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireStorageModule } from "angularfire2/storage";
-import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 import {googlemaps_key} from "../key";
 
@@ -35,8 +34,7 @@ import {googlemaps_key} from "../key";
     BookmarkPageModule,
     MemoPageModule,
     AngularFireModule.initializeApp(enviroment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    AngularFirestoreModule,
     AngularFireStorageModule,
     AgmCoreModule.forRoot({
       apiKey: googlemaps_key
@@ -52,7 +50,7 @@ import {googlemaps_key} from "../key";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FoursquareServiceProvider,
-    BookmarkProvider,
+    BookmarkProvider
   ]
 })
 export class AppModule {}
