@@ -40,7 +40,7 @@ import {googlemaps_key} from "../key";
     AngularFireStorageModule,
     AgmCoreModule.forRoot({
       apiKey: googlemaps_key
-    }),
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +52,7 @@ import {googlemaps_key} from "../key";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FoursquareServiceProvider,
-    BookmarkProvider
+    BookmarkProvider,
   ]
 })
 export class AppModule {}
