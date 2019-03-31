@@ -19,10 +19,6 @@ export class MyApp {
               private foursquareService: FoursquareServiceProvider,
               private storage: Storage) {
     platform.ready().then(() => {
-      // Environment.setEnv({
-      //   'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDcxw_gQOzT3sli1XjIW6fGlgJFT8jvlbo',
-      //   'API_KEY_FOR_BROWSER_DEBUG': ''
-      // });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();

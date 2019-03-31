@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavController, Platform, LoadingController} from "ionic-angular";
 import { FoursquareServiceProvider } from "../../providers/foursquare-service/foursquare-service";
 import {Storage} from "@ionic/storage";
-import {GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent} from "@ionic-native/google-maps";
+import {Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent} from "@ionic-native/google-maps";
 import {DetailPage} from "../detail/detail";
 import {BookmarkPage} from "../bookmark/bookmark";
 
@@ -25,7 +25,8 @@ export class HomePage implements OnInit{
     await this.platform.ready();
     // await this.loadMap()
 
-    this.loadCheckins()
+    this.loadCheckins();
+    this.loadMap();
   }
 
   loadCheckins() {
@@ -47,12 +48,16 @@ export class HomePage implements OnInit{
   }
 
   loadMap() {
+    Environment.setEnv({
+      'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDcxw_gQOzT3sli1XjIW6fGlgJFT8jvlbo',
+      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyDcxw_gQOzT3sli1XjIW6fGlgJFT8jvlbo'
+    });
     let element: HTMLElement = document.getElementById('map_canvas');
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
-          lat: 43.0741904,
-          lng: -89.3809802
+          lat: 35.103611,
+          lng: 137.148183
         },
         zoom: 18,
         tilt: 30
@@ -71,8 +76,8 @@ export class HomePage implements OnInit{
           icon: 'blue',
           animation: 'DROP',
           position: {
-            lat: 43.0741904,
-            lng: -89.3809802
+            lat: 35.103611,
+            lng: 137.148183
           }
         })
           .then(marker => {
@@ -101,13 +106,6 @@ export class HomePage implements OnInit{
   //     }
   //   });
   // }
-
-  authTest() {
-    if (!this.storage.get("token")){
-      this.foursquareService.auth();
-      return
-    }
-  }
 
   openBookmark() {
     this.navCtrl.push(BookmarkPage);

@@ -13,6 +13,19 @@ import {DetailPageModule} from "../pages/detail/detail.module";
 import {BookmarkPageModule} from "../pages/bookmark/bookmark.module";
 import {MemoPageModule} from "../pages/memo/memo.module";
 import { BookmarkProvider } from '../providers/bookmark/bookmark';
+import {firebase_api_key} from "../key";
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
+export const firebaseConfig = {
+  apiKey: firebase_api_key,
+  authDomain: "menbam.firebaseapp.com",
+  databaseURL: "https://menbam.firebaseio.com",
+  projectId: "menbam",
+  storageBucket: "menbam.appspot.com",
+  messagingSenderId: "956453699163"
+};
 
 @NgModule({
   declarations: [
@@ -26,7 +39,10 @@ import { BookmarkProvider } from '../providers/bookmark/bookmark';
     IonicStorageModule.forRoot(),
     DetailPageModule,
     BookmarkPageModule,
-    MemoPageModule
+    MemoPageModule,
+    // AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireDatabaseModule,
+    // AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +54,8 @@ import { BookmarkProvider } from '../providers/bookmark/bookmark';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FoursquareServiceProvider,
-    BookmarkProvider
+    BookmarkProvider,
+    // AngularFireDatabase
   ]
 })
 export class AppModule {}
