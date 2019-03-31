@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {BookmarkProvider} from "../../providers/bookmark/bookmark";
+
 import {MemoPage} from "../memo/memo";
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore'
-import {Memo} from "../../Models/Memo";
 import {Observable} from "rxjs";
+import {AngularFirestoreDocument} from "angularfire2/firestore/document/document";
+import {AngularFirestore} from "angularfire2/firestore/firestore";
 
 /**
  * Generated class for the DetailPage page.
