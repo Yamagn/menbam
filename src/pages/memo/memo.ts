@@ -5,7 +5,7 @@ import {
   IonicPage,
   LoadingController,
   NavController,
-  NavParams
+  NavParams, normalizeURL, Platform
 } from 'ionic-angular';
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {SafeUrl} from "@angular/platform-browser";
@@ -35,10 +35,11 @@ export class MemoPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public platform: Platform,
               public actionSheetCtrl: ActionSheetController,
               public camera: Camera,
               public domSanitizer: DomSanitizer,
-              public alertCrtl: AlertController,
+              public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public fireStorage: AngularFireStorage) {
   }
@@ -75,7 +76,7 @@ export class MemoPage {
     return () => {
       const options: CameraOptions = {
         quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
+        destinationType: this.camera.DestinationType.DATA_URL,
         sourceType: sourceType,
         allowEdit: true,
         mediaType: this.camera.MediaType.PICTURE,
@@ -85,13 +86,15 @@ export class MemoPage {
       const getPicture = this.camera.getPicture(options);
 
       getPicture.then((imageData) => {
-        this.image_uri = "data:image/jpeg;base64, " + imageData;
+        let win: any = window;
 
+        this.image_uri = "data:image/jpeg;base64," + imageData;
+        console.log(this.image_uri);
         this.image_uri_for_preview = this.domSanitizer.bypassSecurityTrustUrl(this.image_uri);
 
       },(err) => {
         console.log(err);
-        const alert =this.alertCrtl.create({
+        const alert =this.alertCtrl.create({
           title: "画像が選択できません",
           buttons: ["OK"]
         });

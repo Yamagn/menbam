@@ -60,8 +60,11 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-camera": {},
-      "cordova-plugin-file": {}
+      "cordova-plugin-file": {},
+      "cordova-plugin-camera": {
+        "CAMERA_USAGE_DESCRIPTION": "ラーメンの画像を撮るためにカメラを使用します",
+        "PHOTOLIBRARY_USAGE_DESCRIPTION": "ラーメンの画像を選択するためにフォトライブラリを使用します"
+      }
     },
     "platforms": [
       "browser",
